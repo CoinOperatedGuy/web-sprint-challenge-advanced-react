@@ -12,14 +12,21 @@ export const useForm = () => {
     };
 
     const [values, setValues] = useState(initialValues);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    const handlesValuesChange = (e) => {
-        setValues(e.target.value);
+    const handleChanges = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setShowSuccessMessage(true);
+        clearValues();
+      };
+    
     const clearValues = () => {
         setValues("");
     };
 
-    return [values, setValues, clearValues]
+    return [values, handleChanges, handleSubmit]
 };

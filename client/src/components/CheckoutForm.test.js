@@ -11,7 +11,7 @@ test("form header renders", () => {
 test("form shows success message on submit with form details", async () => {
     const container = render(<CheckoutForm />);
     const firstName = container.getByPlaceholderText('First Name');
-    const submit = container.getAllByTestId('submit');
+    const submit = container.getByTestId('submit');
 
     fireEvent.change(firstName, {target: {value: 'Trevor'}});
     expect(firstName.value).toBe('Trevor');
